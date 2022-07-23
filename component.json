@@ -1,6 +1,14 @@
 {
     "name": "client-settings-node",
-    "version": "1.0.0",
+    "type": "microservice",
+    "language": "node",
+    "version": "1.0.1",
+    "build": 0,
     "registry": "pipdevs",
-    "build": 0
+    "artifacts": [
+        {
+            "name": "<name>",
+            "type": "npm"
+        }
+    ]
 }
