@@ -4,5 +4,6 @@
 /dist
 /obj/test
 /config/test_connections.yaml
+/package-lock.json
 /docker/id_rsa*
-package-lock.json
+/docker/.npmrc
