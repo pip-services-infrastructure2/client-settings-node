@@ -2,12 +2,12 @@ import { ConfigParams } from 'pip-services3-commons-nodex';
 import { FilterParams } from 'pip-services3-commons-nodex';
 import { PagingParams } from 'pip-services3-commons-nodex';
 import { DataPage } from 'pip-services3-commons-nodex';
-import { CommandableGrpcClient } from 'pip-services3-grpc-nodex';
+import { CommandableHttpClient } from 'pip-services3-rpc-nodex';
 
 import { SettingsSectionV1 } from './SettingsSectionV1';
 import { ISettingsClientV1 } from './ISettingsClientV1';
 
-export class SettingsCommandableGrpcClientV1 extends CommandableGrpcClient implements ISettingsClientV1 {
+export class SettingsCommandableHttpClientV1 extends CommandableHttpClient implements ISettingsClientV1 {
 
     constructor(config?: any) {
         super('v1/settings');
@@ -56,7 +56,6 @@ export class SettingsCommandableGrpcClientV1 extends CommandableGrpcClient imple
 
         if (parameters)
             parameters = ConfigParams.fromValue(parameters);
-
         return parameters;
     }
 
@@ -71,12 +70,11 @@ export class SettingsCommandableGrpcClientV1 extends CommandableGrpcClient imple
         );
         if (newParameters)
             newParameters = ConfigParams.fromValue(newParameters);
-
         return newParameters;
     }
 
     public async modifySection(correlationId: string, id: string, updateParams: ConfigParams, incrementParams: ConfigParams): Promise<ConfigParams> {
-        let newParameters = await this.callCommand<any>(
+        let parameters = await this.callCommand<any>(
             'modify_section',
             correlationId,
             {
@@ -85,9 +83,9 @@ export class SettingsCommandableGrpcClientV1 extends CommandableGrpcClient imple
                 increment_parameters: incrementParams
             }
         );
-        if (newParameters)
-            newParameters = ConfigParams.fromValue(newParameters);
 
-        return newParameters;
+        if (parameters)
+            parameters = ConfigParams.fromValue(parameters);
+        return parameters;
     }
 }

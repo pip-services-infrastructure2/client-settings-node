@@ -31,12 +31,11 @@ export class SettingsGrpcClientV1 extends GrpcClient implements ISettingsClientV
             if (response.error != null)
                 throw SettingsGrpcConverterV1.toError(response.error);
 
+            timing.endTiming();
             return response ? SettingsGrpcConverterV1.toSettingsIdPage(response.getPage()) : null
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -54,12 +53,11 @@ export class SettingsGrpcClientV1 extends GrpcClient implements ISettingsClientV
             if (response.error != null)
                 throw SettingsGrpcConverterV1.toError(response.error);
 
+            timing.endTiming();
             return response ? SettingsGrpcConverterV1.toSettingsSectionPage(response.getPage()) : null;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
     
@@ -75,13 +73,12 @@ export class SettingsGrpcClientV1 extends GrpcClient implements ISettingsClientV
             if (response.error != null)
                 throw SettingsGrpcConverterV1.toError(response.error);
 
+            timing.endTiming();
             return response ? ConfigParams.fromValue(SettingsGrpcConverterV1.getMap(response.getParametersMap())) : null;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
-        }      
+        }    
     }
 
     public async setSection(correlationId: string, id: string, parameters: ConfigParams): Promise<ConfigParams> {
@@ -97,13 +94,12 @@ export class SettingsGrpcClientV1 extends GrpcClient implements ISettingsClientV
             if (response.error != null)
                 throw SettingsGrpcConverterV1.toError(response.error);
 
+            timing.endTiming();
             return response ? ConfigParams.fromValue(SettingsGrpcConverterV1.getMap(response.getParametersMap())) : null;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
-        }    
+        }
     }
 
     public async modifySection(correlationId: string, id: string, updateParams: ConfigParams, incrementParams: ConfigParams): Promise<ConfigParams> {
@@ -120,12 +116,11 @@ export class SettingsGrpcClientV1 extends GrpcClient implements ISettingsClientV
             if (response.error != null)
                 throw SettingsGrpcConverterV1.toError(response.error);
 
+            timing.endTiming();
             return response ? ConfigParams.fromValue(SettingsGrpcConverterV1.getMap(response.getParametersMap())) : null;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
-        }     
+        }   
     }
 }

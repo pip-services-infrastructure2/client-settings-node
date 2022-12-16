@@ -9,12 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SettingsCommandableGrpcClientV1 = void 0;
+exports.SettingsCommandableLambdaClientV1 = void 0;
 const pip_services3_commons_nodex_1 = require("pip-services3-commons-nodex");
-const pip_services3_grpc_nodex_1 = require("pip-services3-grpc-nodex");
-class SettingsCommandableGrpcClientV1 extends pip_services3_grpc_nodex_1.CommandableGrpcClient {
+const pip_services3_aws_nodex_1 = require("pip-services3-aws-nodex");
+class SettingsCommandableLambdaClientV1 extends pip_services3_aws_nodex_1.CommandableLambdaClient {
     constructor(config) {
-        super('v1/settings');
+        super('settings');
         if (config != null)
             this.configure(pip_services3_commons_nodex_1.ConfigParams.fromValue(config));
     }
@@ -43,12 +43,12 @@ class SettingsCommandableGrpcClientV1 extends pip_services3_grpc_nodex_1.Command
     }
     getSectionById(correlationId, id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let parameters = yield this.callCommand('get_section_by_id', correlationId, {
+            let newParameters = yield this.callCommand('get_section_by_id', correlationId, {
                 id: id
             });
-            if (parameters)
-                parameters = pip_services3_commons_nodex_1.ConfigParams.fromValue(parameters);
-            return parameters;
+            if (newParameters)
+                newParameters = pip_services3_commons_nodex_1.ConfigParams.fromValue(newParameters);
+            return newParameters;
         });
     }
     setSection(correlationId, id, parameters) {
@@ -75,5 +75,5 @@ class SettingsCommandableGrpcClientV1 extends pip_services3_grpc_nodex_1.Command
         });
     }
 }
-exports.SettingsCommandableGrpcClientV1 = SettingsCommandableGrpcClientV1;
-//# sourceMappingURL=SettingsCommandableGrpcClientV1.js.map
+exports.SettingsCommandableLambdaClientV1 = SettingsCommandableLambdaClientV1;
+//# sourceMappingURL=SettingsCommandableLambdaClientV1.js.map

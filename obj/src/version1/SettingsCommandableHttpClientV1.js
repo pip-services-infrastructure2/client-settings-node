@@ -9,10 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SettingsCommandableGrpcClientV1 = void 0;
+exports.SettingsCommandableHttpClientV1 = void 0;
 const pip_services3_commons_nodex_1 = require("pip-services3-commons-nodex");
-const pip_services3_grpc_nodex_1 = require("pip-services3-grpc-nodex");
-class SettingsCommandableGrpcClientV1 extends pip_services3_grpc_nodex_1.CommandableGrpcClient {
+const pip_services3_rpc_nodex_1 = require("pip-services3-rpc-nodex");
+class SettingsCommandableHttpClientV1 extends pip_services3_rpc_nodex_1.CommandableHttpClient {
     constructor(config) {
         super('v1/settings');
         if (config != null)
@@ -64,16 +64,16 @@ class SettingsCommandableGrpcClientV1 extends pip_services3_grpc_nodex_1.Command
     }
     modifySection(correlationId, id, updateParams, incrementParams) {
         return __awaiter(this, void 0, void 0, function* () {
-            let newParameters = yield this.callCommand('modify_section', correlationId, {
+            let parameters = yield this.callCommand('modify_section', correlationId, {
                 id: id,
                 update_parameters: updateParams,
                 increment_parameters: incrementParams
             });
-            if (newParameters)
-                newParameters = pip_services3_commons_nodex_1.ConfigParams.fromValue(newParameters);
-            return newParameters;
+            if (parameters)
+                parameters = pip_services3_commons_nodex_1.ConfigParams.fromValue(parameters);
+            return parameters;
         });
     }
 }
-exports.SettingsCommandableGrpcClientV1 = SettingsCommandableGrpcClientV1;
-//# sourceMappingURL=SettingsCommandableGrpcClientV1.js.map
+exports.SettingsCommandableHttpClientV1 = SettingsCommandableHttpClientV1;
+//# sourceMappingURL=SettingsCommandableHttpClientV1.js.map

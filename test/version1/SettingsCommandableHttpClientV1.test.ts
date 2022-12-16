@@ -5,8 +5,8 @@ import { ConsoleLogger } from 'pip-services3-components-nodex';
 
 import { SettingsMemoryPersistence } from 'service-settings-node';
 import { SettingsController } from 'service-settings-node';
-import { SettingsHttpServiceV1 } from 'service-settings-node';
-import { SettingsHttpClientV1 } from '../../src/version1/SettingsHttpClientV1';
+import { SettingsCommandableHttpServiceV1 } from 'service-settings-node';
+import { SettingsCommandableHttpClientV1 } from '../../src/version1/SettingsCommandableHttpClientV1';
 import { SettingsClientFixtureV1 } from './SettingsClientFixtureV1';
 
 var httpConfig = ConfigParams.fromTuples(
@@ -15,9 +15,9 @@ var httpConfig = ConfigParams.fromTuples(
     "connection.port", 3000
 );
 
-suite('SettingsHttpClientV1', ()=> {
-    let service: SettingsHttpServiceV1;
-    let client: SettingsHttpClientV1;
+suite('SettingsCommandableHttpClientV1', ()=> {
+    let service: SettingsCommandableHttpServiceV1;
+    let client: SettingsCommandableHttpClientV1;
     let fixture: SettingsClientFixtureV1;
 
     suiteSetup(async () => {
@@ -25,19 +25,19 @@ suite('SettingsHttpClientV1', ()=> {
         let persistence = new SettingsMemoryPersistence();
         let controller = new SettingsController();
 
-        service = new SettingsHttpServiceV1();
+        service = new SettingsCommandableHttpServiceV1();
         service.configure(httpConfig);
 
         let references: References = References.fromTuples(
             new Descriptor('pip-services', 'logger', 'console', 'default', '1.0'), logger,
             new Descriptor('service-settings', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('service-settings', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('service-settings', 'service', 'http', 'default', '1.0'), service
+            new Descriptor('service-settings', 'service', 'commandable-http', 'default', '1.0'), service
         );
         controller.setReferences(references);
         service.setReferences(references);
 
-        client = new SettingsHttpClientV1();
+        client = new SettingsCommandableHttpClientV1();
         client.setReferences(references);
         client.configure(httpConfig);
 

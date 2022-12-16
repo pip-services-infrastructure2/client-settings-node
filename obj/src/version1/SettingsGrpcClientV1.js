@@ -29,14 +29,12 @@ class SettingsGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcClient {
                 let response = yield this.call('get_section_ids', correlationId, request);
                 if (response.error != null)
                     throw SettingsGrpcConverterV1_1.SettingsGrpcConverterV1.toError(response.error);
+                timing.endTiming();
                 return response ? SettingsGrpcConverterV1_1.SettingsGrpcConverterV1.toSettingsIdPage(response.getPage()) : null;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -50,14 +48,12 @@ class SettingsGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcClient {
                 let response = yield this.call('get_sections', correlationId, request);
                 if (response.error != null)
                     throw SettingsGrpcConverterV1_1.SettingsGrpcConverterV1.toError(response.error);
+                timing.endTiming();
                 return response ? SettingsGrpcConverterV1_1.SettingsGrpcConverterV1.toSettingsSectionPage(response.getPage()) : null;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -70,14 +66,12 @@ class SettingsGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcClient {
                 let response = yield this.call('get_section_by_id', correlationId, request);
                 if (response.error != null)
                     throw SettingsGrpcConverterV1_1.SettingsGrpcConverterV1.toError(response.error);
+                timing.endTiming();
                 return response ? pip_services3_commons_nodex_1.ConfigParams.fromValue(SettingsGrpcConverterV1_1.SettingsGrpcConverterV1.getMap(response.getParametersMap())) : null;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -91,14 +85,12 @@ class SettingsGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcClient {
                 let response = yield this.call('set_section', correlationId, request);
                 if (response.error != null)
                     throw SettingsGrpcConverterV1_1.SettingsGrpcConverterV1.toError(response.error);
+                timing.endTiming();
                 return response ? pip_services3_commons_nodex_1.ConfigParams.fromValue(SettingsGrpcConverterV1_1.SettingsGrpcConverterV1.getMap(response.getParametersMap())) : null;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -113,14 +105,12 @@ class SettingsGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcClient {
                 let response = yield this.call('modify_section', correlationId, request);
                 if (response.error != null)
                     throw SettingsGrpcConverterV1_1.SettingsGrpcConverterV1.toError(response.error);
+                timing.endTiming();
                 return response ? pip_services3_commons_nodex_1.ConfigParams.fromValue(SettingsGrpcConverterV1_1.SettingsGrpcConverterV1.getMap(response.getParametersMap())) : null;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
