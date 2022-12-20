@@ -12,7 +12,7 @@ import { ISettingsClientV1 } from '../../src/version1/ISettingsClientV1';
 import { SettingsCommandableGrpcClientV1 } from '../../src/version1/SettingsCommandableGrpcClientV1';
 import { SettingsClientFixtureV1 } from './SettingsClientFixtureV1';
 
-var httpConfig = ConfigParams.fromTuples(
+let httpConfig = ConfigParams.fromTuples(
     "connection.protocol", "http",
     "connection.host", "localhost",
     "connection.port", 3000

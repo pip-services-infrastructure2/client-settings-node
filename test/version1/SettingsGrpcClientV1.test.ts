@@ -9,7 +9,7 @@ import { SettingsGrpcServiceV1 } from 'service-settings-node';
 import { SettingsGrpcClientV1 } from '../../src/version1/SettingsGrpcClientV1';
 import { SettingsClientFixtureV1 } from './SettingsClientFixtureV1';
 
-var httpConfig = ConfigParams.fromTuples(
+let httpConfig = ConfigParams.fromTuples(
     "connection.protocol", "http",
     "connection.host", "localhost",
     "connection.port", 3000

@@ -9,7 +9,7 @@ import { SettingsCommandableHttpServiceV1 } from 'service-settings-node';
 import { SettingsCommandableHttpClientV1 } from '../../src/version1/SettingsCommandableHttpClientV1';
 import { SettingsClientFixtureV1 } from './SettingsClientFixtureV1';
 
-var httpConfig = ConfigParams.fromTuples(
+let httpConfig = ConfigParams.fromTuples(
     "connection.protocol", "http",
     "connection.host", "localhost",
     "connection.port", 3000
